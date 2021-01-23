@@ -1,16 +1,14 @@
-from fastapi import APIRouter
-from db import databasemanager as db
-from starlette.requests import Request
+from fastapi import APIRouter, Body, Depends, HTTPException
+from fastapi.security import OAuth2PasswordRequestForm
+
+
 from starlette.responses import PlainTextResponse, JSONResponse
-from models import userModel
+from models import logsModel
 router = APIRouter()
 
 
-def getToken(email, password):
-    return (db.getToken(email, password))
-
-
-@router.post("/auth/")
-async def create_user(user: userModel):
-    return db.get_token(user.email, user.password)
+@router.post("/", response_model=logsModel)
+async def create_session(form_data: OAuth2PasswordRequestForm = Depends()):
+    
+    return PlainTextResponse("Create Session and generate Token")
 

@@ -57,9 +57,3 @@ connection = pymysql.connect(host=config.DB_URL, user=config.DB_USER, passwd=con
                              database=config.DB_NAME)
 cursor = connection.cursor()
 
-# UNIT TESTS
-
-
-# print(verify_token(0, 'aaa'))
-# print(get_token("a", "0"))
-# print(create_token(1, "a", "0"))

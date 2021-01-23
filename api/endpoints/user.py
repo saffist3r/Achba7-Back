@@ -1,23 +1,23 @@
 from fastapi import APIRouter
 from starlette.requests import Request
 from starlette.responses import PlainTextResponse, JSONResponse
-from models import userModel
+
 router = APIRouter()
 
 
-@router.post("/user/create/")
+@router.post("/")
 async def create_user():
-    return PlainTextResponse("OK")
+    return PlainTextResponse("Create")
 
 
-@router.get("/user/")
+@router.get("/")
 async def get_user():
-    return JSONResponse(status_code=204)
+    return PlainTextResponse("Show user")
 
 
-@router.post("/user/delete/")
+@router.delete("/")
 async def delete_user(request: Request):
-    return PlainTextResponse("OK")
+    return PlainTextResponse("delete")
 
 
 
