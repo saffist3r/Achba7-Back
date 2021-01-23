@@ -24,16 +24,18 @@ def send_query(query):
 
 
 def get_token(email, password):
+    # Return the Token element
     cursor.execute(f"select id from user where email='{email}' and password='{password}'")
     id_user = cursor.fetchone()
     if id_user != 0:
-        cursor.execute(f"select token from tokens where user='{id_user[0]}'")
+        cursor.execute(f"select * from tokens where user='{id_user[0]}'")
         return cursor.fetchone()
     else:
         return "ERROR"
 
 
 def create_token(user, email, password):
+    # Creates a Token if the combination email/password is accepted.
     cursor.execute(f"select * from `user` where email='{email}' and password='{password}'")
     if len(cursor.fetchall()) > 0:
         # GENERATE JWT TOKEN
@@ -58,6 +60,6 @@ cursor = connection.cursor()
 # UNIT TESTS
 
 
-print(verify_token(0, 'aaa'))
-print(get_token("a", "0"))
+# print(verify_token(0, 'aaa'))
+# print(get_token("a", "0"))
 # print(create_token(1, "a", "0"))
