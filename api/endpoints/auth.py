@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from connector import databasemanager as db
+from db import databasemanager as db
 from starlette.requests import Request
 from starlette.responses import PlainTextResponse, JSONResponse
 from models import userModel

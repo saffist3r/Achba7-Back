@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 @router.post("/user/create/")
-async def create_user(user: userModel):
+async def create_user():
     return PlainTextResponse("OK")
 
 
