@@ -2,3 +2,4 @@ config.py
 /venv/
 .gitignore
 .idea
+.gitconfig
