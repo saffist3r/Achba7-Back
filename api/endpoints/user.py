@@ -7,6 +7,7 @@ from starlette.responses import PlainTextResponse, JSONResponse
 from sqlalchemy.orm import Session
 from db import crud, models, schemas
 from db.database import SessionLocal, engine
+
 models.Base.metadata.create_all(bind=engine)
 
 router = APIRouter()
@@ -22,7 +23,10 @@ def get_db():
 
 
 @router.post("/")
-async def create_user():
+async def create_user(db: Session, user: schemas.User):
+    db_user = models.User(password=user.password, name=user.name, surname=user.surname, photo=user.photo,
+                          fonction=user.fonction, date=user.date, email=user.email, telephone=user.telephone,
+                          city=user.city, country=user.country)
     return PlainTextResponse("Create")
 
 
@@ -43,7 +47,3 @@ async def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
 @router.delete("/")
 async def delete_user(request: Request):
     return PlainTextResponse("delete")
-
-
-
-

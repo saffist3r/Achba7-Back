@@ -6,7 +6,6 @@ router = APIRouter()
 
 
 @router.post("/")
-
 async def create_session():
     
     return PlainTextResponse("Create Session and generate Token")
